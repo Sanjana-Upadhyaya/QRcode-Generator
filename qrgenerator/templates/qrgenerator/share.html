@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share QR Code</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container1">
+        <h1>Share QR Code</h1>
+        <img class="img" src="{{ qr_code_data }}" alt="QR Code">
+        
+        <div class="share-container">
+            <h2>Share this QR Code</h2>
+            <div class="share-buttons">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ qr_code_image_url }}" target="_blank" class="share-btn facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://twitter.com/intent/tweet?url={{ qr_code_image_url }}" target="_blank" class="share-btn twitter">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ qr_code_image_url }}" target="_blank" class="share-btn linkedin">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="mailto:?subject=Check out this QR Code&body=Here is the QR Code: {{ qr_code_image_url }}" class="share-btn email">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <button class="share-btn copy" onclick="copyLink()">
+                    <i class="fas fa-link"></i> Copy Link
+                </button>
+                <input type="text" id="shareLink" value="{{ qr_code_image_url }}" readonly style="opacity: 0; position: absolute; left: -9999px;">
+            </div>
+        </div>
+    
+        <script>
+            function copyLink() {
+                var copyText = document.getElementById("shareLink");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /* For mobile devices */
+                navigator.clipboard.writeText(copyText.value);
+                alert("Link copied to clipboard!");
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Generate QR Code</button>
+        </form>
+        {% if qr_code_data %}
+            <div class="qr-code">
+                <img id="qrCodeImage" src="{{ qr_code_data }}" alt="QR Code"><br>
+                <div class="button-group">
+                    <button class="b1"><a href="{{ share_url }}">Share this QR Code</a></button>
+                    <button class="b1" onclick="downloadQRCode('png')">Download as PNG</button>
+                    <button class="b1" onclick="downloadQRCode('jpg')">Download as JPG</button>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        function downloadQRCode(format) {
+            var img = document.getElementById('qrCodeImage');
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var imgWidth = img.width;
+            var imgHeight = img.height;
+
+            canvas.width = imgWidth;
+            canvas.height = imgHeight;
+
+            ctx.drawImage(img, 0, 0, imgWidth, imgHeight);
+
+            var link = document.createElement('a');
+            link.href = canvas.toDataURL('image/' + format);
+            link.download = 'qr_code.' + format;
+            link.click();
+        }
+    </script>
+</body>
+</html>
+
