@@ -7,6 +7,13 @@ This is a simple web-based application that generates QR codes based on user inp
 - Download QR codes as PNG or JPG.
 - Share QR codes via a link.
 
+## Screenshots
+
+![Main Page](screenshots/screenshot1.png)
+![QR Code Generated](screenshots/screenshot2.png)
+![Share](screenshots/screenshot3.png)
+
+
   ### Prerequisites
 
 - Python 3.12 or later
