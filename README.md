@@ -59,3 +59,6 @@ This is a simple web-based application that generates QR codes based on user inp
 - `templates/` - Directory for HTML templates.
 - `.gitignore` - Specifies which files and directories to ignore in the repository.
 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
