@@ -7,6 +7,12 @@ This is a simple web-based application that generates QR codes based on user inp
 - Download QR codes as PNG or JPG.
 - Share QR codes via a link.
 
+## Screenshots
+
+![Main Page](screenshots/Screenshot 2024-07-10 162557.png)
+![QR Code Generated](screenshots/Screenshot 2024-07-10 162629.png)
+![Share](screenshots/Screenshot 2024-07-10 162707.png)
+
   ### Prerequisites
 
 - Python 3.12 or later
@@ -52,3 +58,6 @@ This is a simple web-based application that generates QR codes based on user inp
 - `templates/` - Directory for HTML templates.
 - `.gitignore` - Specifies which files and directories to ignore in the repository.
 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
